@@ -1,14 +1,13 @@
-# filepath: d:\cv_chatbot\app.py
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import google.generativeai as genai
 import os
 
 app = Flask(__name__)
 
-# Solicita la clave de API de Gemini por consola
-API_KEY = input('Please enter your Gemini API key: ')
+# Obtener la clave de API desde las variables de entorno
+API_KEY = os.getenv("GEMINI_API_KEY")
 if not API_KEY:
-    raise ValueError("No API_KEY provided. Please enter the GEMINI_APIKEY.")
+    raise ValueError("No API_KEY found. Set GEMINI_API_KEY in environment variables.")
 
 genai.configure(api_key=API_KEY)
 
@@ -45,24 +44,20 @@ initial_context = (
     "Román is known for his excellent communication skills, ability to work under pressure, and commitment to delivering high-quality results."
 )
 
-# Define tu manejador de errores 404 para redirigir a la página principal
+# Define el manejador de errores 404 para redirigir a la página principal
 @app.errorhandler(404)
 def page_not_found(e):
     return redirect(url_for('home'))
 
 @app.route('/')
 def home():
-    # Renderiza la plantilla HTML para la página principal
     return render_template('chat.html')
 
 @app.route('/chat', methods=['POST'])
 def chat():
     try:
-        # Obtiene el mensaje del usuario desde el formulario
         user_input = request.form['message']
         prompt = initial_context + " " + user_input
-
-        # Genera la respuesta usando el modelo de Gemini
         response = model.generate_content(prompt)
 
         if response and hasattr(response, 'text'):
@@ -73,6 +68,4 @@ def chat():
         print(f"Error: {e}")
         return jsonify({'response': "Sorry, but Gemini didn't want to answer that!"})
 
-if __name__ == '__main__':
-    # Inicia la aplicación Flask en modo de depuración
-    app.run(host='0.0.0.0', port=8080)
+# No incluir app.run(), ya que PythonAnywhere maneja la ejecución con WSGI
