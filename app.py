@@ -1,11 +1,15 @@
+# filepath: d:\cv_chatbot\app.py
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import google.generativeai as genai
 import os
 
 app = Flask(__name__)
 
-# Configura la clave de API de Gemini usando el secreto de GitHub
-API_KEY = os.getenv('GEMINI_APIKEY')
+# Solicita la clave de API de Gemini por consola
+API_KEY = input('Please enter your Gemini API key: ')
+if not API_KEY:
+    raise ValueError("No API_KEY provided. Please enter the GEMINI_APIKEY.")
+
 genai.configure(api_key=API_KEY)
 
 # Inicializa el modelo de Gemini
