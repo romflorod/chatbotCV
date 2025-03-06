@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Obtener la clave de API desde las variables de entorno
-API_KEY = os.getenv("GEMINI_API_KEY")
+API_KEY = "AIzaSyAKGMAqZmD1yzesQHFTM8PWasAukfXxPhE"
 if not API_KEY:
     raise ValueError("No API_KEY found. Set GEMINI_API_KEY in environment variables.")
 
