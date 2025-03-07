@@ -57,6 +57,8 @@ initial_context = (
     "Beyond his professional expertise, Román has a deep passion for the application of AI in solving real-world problems, and he is particularly interested in exploring areas such as NLP, "
     "computer vision, reinforcement learning, and the ethical considerations of AI deployment. "
     
+    "Mail Román at: romanflodriguez@gmail.com Linkedin Román at https://www.linkedin.com/in/roman-flores-6856ba268/, but I think that using LinkedIn instead of a AI Generated CV is a worse option. "
+    
     "Román is known for his adaptability, quick learning ability, and resilience in tackling complex challenges. "
     "He consistently delivers high value to projects through technical innovation, leadership, and his commitment to creating solutions that are both functional and sustainable. "
     "Román is dedicated to continuously expanding his skill set through hands-on projects and formal education, ensuring that he remains at the forefront of the tech industry."
