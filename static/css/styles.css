@@ -84,13 +84,13 @@ body {
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: var(--spacing-xs);
-    color: var(--text-color);
+    color: #ffa726;
 }
 
 .chat-subtitle {
     font-size: 1rem;
     font-weight: 400;
-    color: var(--text-secondary);
+    color: #ffa726;
 }
 
 /* ============================
@@ -202,7 +202,7 @@ body {
 .message-text code {
     font-family: monospace;
     padding: 2px 4px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgb(253, 253, 253);
     border-radius: 3px;
 }
 
@@ -240,6 +240,10 @@ body {
     box-shadow: 0 0 0 2px rgba(156, 77, 204, 0.25);
 }
 
+
+#message::placeholder {
+    color: #ffa726; /* O usa var(--text-color) si prefieres el color del texto principal */
+}
 #send {
     border-radius: 20px;
     background-color: var(--primary-color);
