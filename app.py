@@ -1,7 +1,6 @@
+import os
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import google.generativeai as genai
-import os
-import binascii
 import sqlite3
 
 app = Flask(__name__)
@@ -56,7 +55,8 @@ initial_context = (
 
 # Crear la base de datos y la tabla para almacenar los prompts
 def init_db():
-    conn = sqlite3.connect('prompts.db')
+    db_path = os.path.join(os.path.dirname(__file__), 'prompts.db')
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS prompts (
@@ -85,7 +85,8 @@ def chat():
         prompt = initial_context + " " + user_input
         
         # Guardar el prompt en la base de datos
-        conn = sqlite3.connect('prompts.db')
+        db_path = os.path.join(os.path.dirname(__file__), 'prompts.db')
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         cursor.execute('INSERT INTO prompts (prompt) VALUES (?)', (user_input,))
         conn.commit()
